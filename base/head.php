@@ -16,6 +16,9 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css">
 	<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
-</head>
-
+	<?php $this->options->头部自定义(); ?>
+</head> 
+<style>
+<?php if ($this->options->Css自定义) : $this->options->Css自定义(); ?><?php endif; ?>
+</style>
 <body>
