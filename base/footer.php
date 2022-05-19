@@ -3,14 +3,12 @@
 	<h6>©<?php $this->options->title() ?></h6>
 	<p class="h6"> Powered by <a href="http://typecho.org" target="_blank">Typecho</a> ※ Theme is <a href="https://blog.zwying.com" target="_blank">Brave</a></p>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/jquery-pjax@2.0.1/jquery.pjax.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+<script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery.pjax/2.0.1/jquery.pjax.min.js" type="application/javascript"></script>
+<script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/nprogress/0.2.0/nprogress.min.js" type="application/javascript"></script>
 <script>
 	window.showSiteRuntime = function() {
-		site_runtime = $("#site_runtime");
-		if (!site_runtime) {
-			return;
-		}
+        var site_runtime = $("#site_runtime");
+		if (!site_runtime) return;
 		window.setTimeout("showSiteRuntime()", 1000);
 		start = new Date("<?php $this->options->lovetime(); ?>");
 		now = new Date();
@@ -27,21 +25,22 @@
 		site_runtime.html("第 <span class=\"bigfontNum\">" + D + "</span> 天 <span class=\"bigfontNum\">" + H + "</span> 小时 <span class=\"bigfontNum\">" + M + "</span> 分钟 <span class=\"bigfontNum\">" + S + "</span> 秒");
 	};
 	showSiteRuntime();
-	$(document).pjax('a', '#Pjax', {
-		fragment: '#Pjax',
-		timeout: 6000
-	});
-	$(document).on('pjax:send', function() {
-		NProgress.start();
-	});
-	$(document).on('pjax:complete', function() {
-		<?php if ($this->options->pjaxContent) : $this->options->pjax回调(); ?><?php endif; ?>
-		NProgress.done();
-	});
+
+    $(document).pjax('a', '#pjax-container', {
+        fragment: '#pjax-container',
+        timeout: 6000
+    });
+    $(document).on('pjax:send', function() {
+        NProgress.start();
+    });
+    $(document).on('pjax:complete', function() {
+        <?php $this->options->pjax回调(); ?>
+        NProgress.done();
+    });
 </script>
 <script src="<?php $this->options->themeUrl('/base/main.js'); ?>"></script>
 <?php $this->footer(); ?>
-<?php if ($this->options->底部自定义) : $this->options->底部自定义(); ?><?php endif; ?>
+<?php $this->options->底部自定义(); ?>
 </body>
 
 </html>

@@ -1,3 +1,12 @@
+body{
+	font-family: Inter,'Noto Sans SC','Microsoft YaHei', sans-serif !important;
+}
+.page-navigator{
+	display: flex;
+}
+.page-navigator li{
+	margin: 0 10px;
+}
 ol,p {
     margin: 0;
 }

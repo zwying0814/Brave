@@ -1,5 +1,4 @@
 <?php
-
 /**
  * 主题首页
  * @package custom
